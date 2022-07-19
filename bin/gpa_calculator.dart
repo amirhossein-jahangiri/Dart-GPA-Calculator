@@ -29,7 +29,11 @@ void calculateAverage() {
     );
 
     scoreList.add(scoreModel);
+
+    clearConsole();
   }
+
+  clearConsole();
 
   print('Calculating...');
 
@@ -50,6 +54,10 @@ void calculateAverage() {
     print(
         'Title:"${thisone.title}"  Score:"${thisone.score}" Unit:"${thisone.unit}"');
   }
+}
+
+void clearConsole() {
+  stdout.write("\x1B[2J\x1B[0;0H");
 }
 
 List<ScoreModel> scoreList = [];
