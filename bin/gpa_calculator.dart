@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 
 void main() {
@@ -8,18 +7,21 @@ void main() {
 void calculateAverage() {
   ScoreModel? scoreModel;
 
-  while (true) {
-    print('======= Use the word end to end the calculation. =======\n');
+  clearConsole();
 
-    print('please enter title:');
+  while (true) {
+    stdout
+        .writeln('<======= Use the word "end" to end the calculation =======>');
+
+    stdout.write('please enter title: ');
     String? title = stdin.readLineSync();
 
     if (title == 'end') break;
 
-    print('please enter score:');
+    stdout.write('please enter score(Just Number and Between 0 - 20): ');
     double? score = double.parse(stdin.readLineSync()!);
 
-    print('please enter unit:');
+    stdout.write('please enter unit(Just Number): ');
     int? unit = int.parse(stdin.readLineSync()!);
 
     scoreModel = ScoreModel(
@@ -35,7 +37,7 @@ void calculateAverage() {
 
   clearConsole();
 
-  print('Calculating...');
+  stdout.writeln('\x1B[32mCalculating...\x1B[0m\n');
 
   int unit = 0;
   double lesson = 0.0;
@@ -48,11 +50,12 @@ void calculateAverage() {
 
   average = lesson / unit;
 
-  print('average is ======> ${average.toStringAsFixed(2)}');
+  stdout.writeln(
+      '\x1B[33mmAverage is ======> ${average.toStringAsFixed(2)}\x1B[0m\n');
 
   for (var thisone in scoreList) {
-    print(
-        'Title:"${thisone.title}"  Score:"${thisone.score}" Unit:"${thisone.unit}"');
+    stdout.writeln(
+        '\x1B[36mTitle:"${thisone.title}"  Score:"${thisone.score}" Unit:"${thisone.unit}"\x1B[0m\n');
   }
 }
 
